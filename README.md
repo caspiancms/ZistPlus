@@ -1,18 +1,19 @@
-ZistPlus - Web Preview (Final)
+ZistPlus — Test Build (updated)
 
-This is a lightweight, minimal, and stable web-preview of ZistPlus built with Next.js 14 (App Router).
+این نسخه تست ZistPlus است — اصلاح‌شده برای تقویم شمسی داخلی و منو تنظیمات.
 
-How to run locally:
-1. Extract ZIP to a folder.
-2. Put Vazirmatn font files into public/fonts/Vazirmatn/: Vazirmatn-Regular.woff2 and Vazirmatn-Bold.woff2. Alternatively system will fall back to system font.
-3. (Optional) Replace public/icons/logo.svg and public/icons/banks/*.svg with official logos.
-4. Run:
-   npm install
-   npm run dev
-5. Open http://localhost:3000
+نحوه اجرا:
+1. unzip the archive
+2. cd into the project
+3. npm install
+4. npm run dev
 
-Notes:
-- Uses native date/time inputs to avoid fragile external date-picker dependencies.
-- Data is stored in localStorage.
-- Splash displays on first run.
-- If port 3000 is busy, run `npm run dev -- -p 3001` or free the port.
+Open http://localhost:3000
+
+نکات:
+- فونت‌ها: اگر Vazirmatn دارید، قرار دهید در public/fonts/
+- همه داده‌ها در localStorage ذخیره می‌شوند
+- Splash با لوگوی سبز در حالت روشن، سفید در دارک مود
+- بانک‌ها با لوگوی placeholder در public/banks/
+
+اگر لاگ خطا آوردی، همین‌جا paste کن.

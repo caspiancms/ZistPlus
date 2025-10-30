@@ -1,16 +1,17 @@
 'use client'
 import Header from '../../components/Header'
 import BottomNav from '../../components/BottomNav'
-
+import { useState, useEffect } from 'react'
 export default function Settings(){
+  const [dark,setDark]=useState(()=>localStorage.getItem('zist_dark')==='true')
+  useEffect(()=>{ localStorage.setItem('zist_dark', dark); if(dark) document.documentElement.classList.add('dark'); else document.documentElement.classList.remove('dark') },[dark])
   return (
-    <div>
+    <div className='container'>
       <Header title='تنظیمات' />
-      <div style={{padding:12}}>
-        <div style={{marginBottom:8}}><strong>تنظیمات</strong></div>
-        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',marginBottom:8}}>
+      <div style={{marginTop:12}} className='card'>
+        <div style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
           <div>حالت تاریک</div>
-          <input type='checkbox' onChange={(e)=>{ if(e.target.checked) localStorage.setItem('zist_theme','dark'); else localStorage.setItem('zist_theme','light'); window.location.reload() }} />
+          <input type='checkbox' checked={dark} onChange={e=>setDark(e.target.checked)} />
         </div>
       </div>
       <BottomNav page='settings' />

@@ -1,26 +1,22 @@
 
-@font-face { font-family: 'Vazirmatn'; src: url('/fonts/Vazirmatn/Vazirmatn-Regular.woff2') format('woff2'); font-weight: 400; }
-@font-face { font-family: 'Vazirmatn'; src: url('/fonts/Vazirmatn/Vazirmatn-Bold.woff2') format('woff2'); font-weight: 700; }
-:root{--brand:#178A34}
-html,body,#__next{height:100%;margin:0;padding:0}
-body{font-family:'Vazirmatn', system-ui, -apple-system, 'Segoe UI', Roboto; background:#f3f4f6;color:#0f1724;direction:rtl;-webkit-font-smoothing:antialiased}
-.container{max-width:420px;margin:0 auto;padding:12px}
-.header{display:flex;align-items:center;justify-content:space-between;padding:12px;background:#fff;border-bottom:1px solid #eee;border-radius:10px 10px 0 0}
+:root{--brand:#178A34;--bg:#f3f4f6;--card:#fff;--text:#0f1724}
+html,body,#_next{height:100%;margin:0;padding:0}
+body{font-family: Vazirmatn, system-ui, -apple-system, 'Segoe UI', Roboto; background:var(--bg); color:var(--text); direction:rtl}
+.header{display:flex;align-items:center;justify-content:space-between;padding:12px;background:var(--card);border-bottom:1px solid #eee}
 .brand{display:flex;align-items:center;gap:10px}
 .brand img{width:44px;height:44px}
 .title{font-weight:700;color:var(--brand);font-size:18px}
-.main{background:#fff;border-radius:0 0 12px 12px;min-height:640px;padding:12px}
-.bottomNav{height:72px;display:flex;align-items:center;justify-content:space-around;border-top:1px solid #eee;background:#fff;border-radius:0 0 10px 10px}
-.fab{width:64px;height:64px;border-radius:32px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 12px 24px rgba(0,0,0,0.12);margin-top:-28px}
-.card{background:#fff;padding:10px;border-radius:10px;box-shadow:0 1px 0 rgba(0,0,0,0.03);margin-bottom:8px}
+.container{max-width:420px;margin:0 auto;padding:12px}
+.card{background:var(--card);padding:10px;border-radius:10px;box-shadow:0 1px 0 rgba(0,0,0,0.03);margin-bottom:8px}
 .input{width:100%;padding:10px;border-radius:8px;border:1px solid #e5e7eb;margin-bottom:8px;background:#fff;color:#000}
-.splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:#f3f4f6;z-index:9999}
-.splash-title{margin-top:12px;font-weight:700;color:var(--brand);opacity:0;transform:translateY(6px);animation:showTitle 0.8s forwards 0.6s}
-@keyframes showTitle{to{opacity:1;transform:translateY(0)}}
-.logo{width:120px;height:120px;display:flex;align-items:center;justify-content:center;border-radius:24px}
+.bottomNav{height:72px;display:flex;align-items:center;justify-content:space-around;border-top:1px solid #eee;background:var(--card);position:fixed;left:0;right:0;bottom:0;max-width:420px;margin:0 auto}
+.fab{width:60px;height:60px;border-radius:30px;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 8px 20px rgba(0,0,0,0.12);margin-top:-30px}
+.splash{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:var(--bg);z-index:9999}
+.logo{width:120px;height:120px;border-radius:20px;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .logo img{width:100%;height:100%;object-fit:contain}
 .logo.spin{animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.stat-card{flex:1;padding:10px;border-radius:8px;background:#fff;text-align:center}
-.bank-option{display:flex;align-items:center;gap:8px}
-.bank-option img{width:28px;height:28px;object-fit:contain;border-radius:6px}
+.dark body{--bg:#071226;--card:#0b1220;--text:#e6eef8}
+.bank-row{display:flex;align-items:center;gap:10px}
+.bank-row img{width:36px;height:36px;object-fit:contain;border-radius:6px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:100px;background:#16a34a;color:#fff;padding:8px 12px;border-radius:8px;z-index:2000}

@@ -1,5 +1,5 @@
 {
-  "name": "zistplus-webpreview-final",
+  "name": "zistplus-test-updated",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,7 +10,6 @@
   "dependencies": {
     "next": "14.2.33",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "recharts": "^2.12.7"
+    "react-dom": "18.2.0"
   }
 }
