@@ -25,10 +25,19 @@ export default function Finance(){
   const [amount, setAmount] = useState('')
   const [bank, setBank] = useState('')
   const [date, setDate] = useState('')
+  const [type, setType] = useState('expense')
+
   useEffect(()=>{ localStorage.setItem('zist_txs', JSON.stringify(txs)) },[txs])
-  function addTx(){ const item = { id: Date.now(), title: title||'بدون عنوان', amount: Number(amount)||0, date: date||'', bank, type: (Number(amount)||0)>0 ? 'income' : 'expense' }; setTxs(prev=>[item,...prev]); setShowAdd(false); setTitle(''); setAmount(''); setBank(''); setDate('') }
+
+  function addTx(){
+    const item = { id: Date.now(), title: title||'بدون عنوان', amount: Number(amount)||0, date: date||'', bank, type };
+    setTxs(prev=>[item,...prev]);
+    setShowAdd(false); setTitle(''); setAmount(''); setBank(''); setDate('')
+  }
+
   const income = txs.filter(t=>t.type==='income').reduce((s,x)=>s+(x.amount||0),0)
   const expense = txs.filter(t=>t.type==='expense').reduce((s,x)=>s+(x.amount||0),0)
+
   return (
     <div className='container'>
       <Header title='مالی' />
@@ -36,10 +45,15 @@ export default function Finance(){
         <h3>تراکنش‌ها</h3>
         <button onClick={()=>setShowAdd(true)}>+ افزودن</button>
       </div>
+
       {showAdd && (
         <div className='card'>
           <input className='input' placeholder='عنوان' value={title} onChange={e=>setTitle(e.target.value)} />
           <input className='input' placeholder='مبلغ' value={amount} onChange={e=>setAmount(e.target.value)} />
+          <div style={{display:'flex',gap:12,alignItems:'center',marginBottom:8}}>
+            <label><input type='radio' name='type' value='income' checked={type==='income'} onChange={e=>setType(e.target.value)} /> درآمد</label>
+            <label><input type='radio' name='type' value='expense' checked={type==='expense'} onChange={e=>setType(e.target.value)} /> هزینه</label>
+          </div>
           <PersianDateTimePicker value={date} onChange={v=>setDate(v)} />
           <BankSelect banks={BANKS} value={bank} onChange={v=>setBank(v)} />
           <div style={{display:'flex',justifyContent:'flex-end',gap:8}}>
@@ -48,10 +62,12 @@ export default function Finance(){
           </div>
         </div>
       )}
+
       <div style={{display:'flex',gap:8,marginTop:12}}>
         <div style={{flex:1}} className='card'><div style={{fontSize:12,opacity:0.6}}>درآمد</div><div style={{fontWeight:700,fontSize:18}}>{income.toLocaleString()}</div></div>
         <div style={{flex:1}} className='card'><div style={{fontSize:12,opacity:0.6}}>هزینه</div><div style={{fontWeight:700,fontSize:18}}>{expense.toLocaleString()}</div></div>
       </div>
+
       {txs.map(x=>(
         <div key={x.id} className='card' style={{display:'flex',justifyContent:'space-between',alignItems:'center'}}>
           <div>
@@ -64,6 +80,7 @@ export default function Finance(){
           </div>
         </div>
       ))}
+
       <BottomNav page='finance' />
     </div>
   )

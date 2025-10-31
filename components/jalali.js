@@ -12,4 +12,13 @@ export function gregorianToJalali(gy, gm, gd){
   else { jm = 7 + Math.floor((days - 186) / 30); jd = 1 + ((days - 186) % 30); }
   return { jy, jm, jd };
 }
-export function formatGregorianToJalaliString(dateStr){ if(!dateStr) return ''; const d = new Date(dateStr); if(isNaN(d)) return ''; const g = { gy: d.getFullYear(), gm: d.getMonth()+1, gd: d.getDate() }; const j = gregorianToJalali(g.gy, g.gm, g.gd); const hh = String(d.getHours()).padStart(2,'0'); const mm = String(d.getMinutes()).padStart(2,'0'); return `${j.jy}/${String(j.jm).padStart(2,'0')}/${String(j.jd).padStart(2,'0')} ${hh}:${mm}` }
+export function formatGregorianToJalaliString(dateStr){
+  if(!dateStr) return '';
+  const d = new Date(dateStr);
+  if(isNaN(d)) return '';
+  const g = { gy: d.getFullYear(), gm: d.getMonth()+1, gd: d.getDate() };
+  const j = gregorianToJalali(g.gy, g.gm, g.gd);
+  const hh = String(d.getHours()).padStart(2,'0');
+  const mm = String(d.getMinutes()).padStart(2,'0');
+  return `${j.jy}/${String(j.jm).padStart(2,'0')}/${String(j.jd).padStart(2,'0')} ${hh}:${mm}`;
+}
